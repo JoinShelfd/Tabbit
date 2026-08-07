@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tabbit — Quit Energy Drinks. Keep the Money.</title>
+<meta name="description" content="Tabbit turns every energy drink you skip into visible savings. Watch a can fill with gold toward your goal. No shame, no accounts — just money protected.">
+<style>
+  :root {
+    --obsidian: #080A0F;
+    --carbon: #12161D;
+    --graphite: #1A2029;
+    --steel: #2B3440;
+    --gold: #FFB21C;
+    --ember: #FF7A1A;
+    --mint: #59E391;
+    --text: #F5F7FA;
+    --text2: #A7B0BC;
+    --muted: #717B88;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--obsidian);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .display { font-family: ui-rounded, -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "Segoe UI", Roboto, sans-serif; }
+
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  header { padding: 28px 0 0; }
+  .brandbar { display: flex; align-items: center; justify-content: space-between; }
+  .brand { font-weight: 900; font-size: 1.35rem; letter-spacing: 0.02em; }
+  .brand span { color: var(--gold); }
+  .hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: center;
+    padding: 64px 0 80px;
+  }
+  .eyebrow {
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+    line-height: 1.06;
+    font-weight: 900;
+    letter-spacing: -0.015em;
+  }
+  h1 em { font-style: normal; color: var(--gold); }
+  .sub {
+    color: var(--text2);
+    font-size: 1.12rem;
+    margin: 20px 0 30px;
+    max-width: 42ch;
+  }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .cta {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--ember));
+    color: var(--obsidian);
+    font-weight: 800;
+    padding: 15px 26px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-size: 1.02rem;
+    box-shadow: 0 8px 30px rgba(255, 178, 28, 0.28);
+    transition: transform 0.15s ease;
+  }
+  .cta:hover { transform: translateY(-1px); }
+  .cta:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 16px; }
+  .cta-note { color: var(--muted); font-size: 0.9rem; }
+
+  /* ---------- The can (signature) ---------- */
+  .can-stage { display: flex; justify-content: center; }
+  .can-svg { width: min(78%, 250px); filter: drop-shadow(0 24px 50px rgba(255, 150, 30, 0.16)); }
+  .liquid { animation: pour 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards; }
+  @keyframes pour {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-158px); }
+  }
+  .glow { animation: warm 2.6s ease 0.5s forwards; opacity: 0.35; }
+  @keyframes warm { to { opacity: 0.9; } }
+  @media (prefers-reduced-motion: reduce) {
+    .liquid { animation: none; transform: translateY(-158px); }
+    .glow { animation: none; opacity: 0.9; }
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 70px 0; border-top: 1px solid var(--steel); }
+  h2 {
+    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .lede { color: var(--text2); max-width: 56ch; margin-bottom: 40px; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: var(--carbon);
+    border: 1px solid var(--steel);
+    border-radius: 20px;
+    padding: 26px 22px;
+  }
+  .step .num {
+    color: var(--gold);
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .step h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; }
+  .step p { color: var(--text2); font-size: 0.96rem; }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .feature {
+    background: var(--carbon);
+    border: 1px solid var(--steel);
+    border-radius: 20px;
+    padding: 26px 22px;
+  }
+  .feature .icon { font-size: 1.5rem; margin-bottom: 12px; display: block; }
+  .feature h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+  .feature p { color: var(--text2); font-size: 0.95rem; }
+
+  .pricing {
+    background: var(--carbon);
+    border: 1px solid var(--steel);
+    border-radius: 24px;
+    padding: 34px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pricing .big { font-size: 1.3rem; font-weight: 900; }
+  .pricing .big span { color: var(--mint); }
+  .pricing p { color: var(--text2); font-size: 0.95rem; max-width: 46ch; }
+
+  .privacy-strip {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--mint);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: 26px;
+  }
+
+  footer {
+    border-top: 1px solid var(--steel);
+    padding: 40px 0 60px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  footer .links { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 14px; }
+  footer a { color: var(--text2); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding: 44px 0 60px; gap: 20px; }
+    .can-stage { order: -1; }
+    .can-svg { width: min(56%, 190px); }
+    .steps, .features { grid-template-columns: 1fr; }
+    section { padding: 54px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="brandbar">
+    <div class="brand display">Tabb<span>it</span></div>
+  </div>
+
+  <div class="hero">
+    <div>
+      <div class="eyebrow display">Quit energy drinks</div>
+      <h1 class="display">Keep the money.<br><em>Move the liquid.</em></h1>
+      <p class="sub">Every energy drink you skip pours real money into a can on your screen — filling toward something you actually want. No shame. No accounts. Just money protected.</p>
+      <div class="cta-row">
+        <a class="cta display" href="#" aria-label="Download Tabbit on the App Store">Coming soon to the App&nbsp;Store</a>
+        <span class="cta-note">iPhone · 7-day free trial</span>
+      </div>
+      <div class="privacy-strip">🔒 Everything stays on your device.</div>
+    </div>
+
+    <div class="can-stage" aria-hidden="true">
+      <!-- The can: Tabbit's hero mechanic, filling on page load -->
+      <svg class="can-svg" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A can filling with gold liquid">
+        <defs>
+          <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#6E7885"/>
+            <stop offset="0.18" stop-color="#D9E0E8"/>
+            <stop offset="0.42" stop-color="#8A94A1"/>
+            <stop offset="0.62" stop-color="#C6CEd8"/>
+            <stop offset="0.85" stop-color="#77818E"/>
+            <stop offset="1" stop-color="#59616D"/>
+          </linearGradient>
+          <linearGradient id="liq" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFD35C"/>
+            <stop offset="0.5" stop-color="#FFB21C"/>
+            <stop offset="1" stop-color="#E86A00"/>
+          </linearGradient>
+          <clipPath id="window">
+            <rect x="76" y="72" width="48" height="180" rx="24"/>
+          </clipPath>
+        </defs>
+
+        <!-- body -->
+        <rect x="30" y="24" width="140" height="272" rx="26" fill="url(#metal)"/>
+        <rect x="30" y="24" width="140" height="272" rx="26" fill="none" stroke="#2B3440" stroke-width="2"/>
+        <!-- top lid -->
+        <ellipse cx="100" cy="26" rx="70" ry="12" fill="#9AA3AF"/>
+        <ellipse cx="100" cy="24" rx="62" ry="9" fill="#6E7885"/>
+        <rect x="88" y="18" width="24" height="8" rx="4" fill="#C6CED8"/>
+        <!-- window -->
+        <rect x="72" y="68" width="56" height="188" rx="28" fill="#0B0E14" stroke="#39424F" stroke-width="3"/>
+        <!-- warm glow behind liquid -->
+        <circle class="glow" cx="100" cy="238" r="30" fill="#FF7A1A" opacity="0.35"/>
+        <!-- liquid, clipped to window, rises on load -->
+        <g clip-path="url(#window)">
+          <rect class="liquid" x="76" y="214" width="48" height="200" fill="url(#liq)"/>
+          <rect class="liquid" x="76" y="211" width="48" height="4" fill="#FFE49A" opacity="0.85"/>
+        </g>
+        <!-- droplets -->
+        <circle cx="52" cy="120" r="2.4" fill="#E5EBF2" opacity="0.55"/>
+        <circle cx="150" cy="96" r="2" fill="#E5EBF2" opacity="0.45"/>
+        <circle cx="146" cy="200" r="2.6" fill="#E5EBF2" opacity="0.5"/>
+        <circle cx="56" cy="236" r="2" fill="#E5EBF2" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="wrap" id="how">
+  <h2 class="display">How it works</h2>
+  <p class="lede">Three moves, repeated daily. The order is the whole product.</p>
+  <div class="steps">
+    <div class="step">
+      <span class="num display">STEP 1</span>
+      <h3 class="display">Skip the can</h3>
+      <p>A craving hits. You leave the can on the shelf — or ride it out with Tabbit's built-in breathing timer.</p>
+    </div>
+    <div class="step">
+      <span class="num display">STEP 2</span>
+      <h3 class="display">Pour it in</h3>
+      <p>Log the skip. The drink's real price pours into your can as gold, on your Home tab and your widgets.</p>
+    </div>
+    <div class="step">
+      <span class="num display">STEP 3</span>
+      <h3 class="display">Crack the goal</h3>
+      <p>The can fills toward a goal you chose — AirPods, a trip, an emergency fund. Hit it, crack it open, start the next one.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="features">
+  <h2 class="display">Built for the quiet win</h2>
+  <p class="lede">No streak-shaming, no lectures. A missed day is just a quiet day.</p>
+  <div class="features">
+    <div class="feature">
+      <span class="icon">🥫</span>
+      <h3 class="display">The Can</h3>
+      <p>Your savings as liquid gold, rising in a translucent can. Add a photo of your goal and watch it get submerged.</p>
+    </div>
+    <div class="feature">
+      <span class="icon">🌬️</span>
+      <h3 class="display">Cravings SOS</h3>
+      <p>A guided breathing circle for the moment a craving crests — with the exact dollar value of riding it out.</p>
+    </div>
+    <div class="feature">
+      <span class="icon">📊</span>
+      <h3 class="display">Stats &amp; widgets</h3>
+      <p>Streaks, caffeine avoided, weekly pace, projections — plus Home and Lock Screen widgets that log with one tap.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="pricing">
+  <div class="pricing">
+    <div>
+      <div class="big display">Try Tabbit free for 7 days. Then <span>$19.99/year</span>.</div>
+      <p>Monthly and lifetime options too. That's less than a week of energy drinks — and Tabbit shows you the math with your own numbers.</p>
+    </div>
+    <a class="cta display" href="#" aria-label="Download Tabbit on the App Store">Get Tabbit</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
+      <a href="mailto:zselburg@gmail.com">Support: zselburg@gmail.com</a>
+    </div>
+    <div>© 2026 Tabbit. All savings stay on your device.</div>
+  </div>
+</footer>
+
+</body>
+</html>
